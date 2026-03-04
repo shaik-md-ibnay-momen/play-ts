@@ -1,0 +1,11 @@
+{
+    "formTitle": "Login to your account",
+    "email": "shk123@gmail.com",
+    "password": "123456789",
+    "warningMessage": "Your email or password is incorrect!",
+    "wrongEmail": "wrongemail@gmail.com",
+    "wrongPassword": "wrongpassword",
+    "loginUrl": "https://automationexercise.com/login"
+
+
+}

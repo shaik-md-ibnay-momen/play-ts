@@ -1,0 +1,10 @@
+{
+  "ajaxUrl": "https://www.testmuai.com/selenium-playground/ajax-form-submit-demo/",
+  "pageTitle": "Selenium Grid Online | Run Selenium Test On Cloud",
+  "formTitle": "Form Submit Demo",
+  "nameBox": "Name",
+  "massageBox": "Message",
+  "nameValue": "Shaik",
+  "massageValue": "Hello",
+  "successMessage": " Ajax Request is Processing!"
+}
