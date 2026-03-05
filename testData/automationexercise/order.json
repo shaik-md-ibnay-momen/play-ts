@@ -1,0 +1,11 @@
+{
+    "orderComment": "Please deliver between 9 AM to 5 PM.",
+    "nameOnCard": "John Doe",
+    "cardNumber": "4111111111111111",
+    "cvc": "123",
+    "expiryMonth": "12",
+    "expiryYear": "2025",
+    "successMessage": "Your order has been placed successfully!"
+        
+
+}

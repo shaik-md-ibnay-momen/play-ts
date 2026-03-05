@@ -6,6 +6,7 @@ import { RegisterUser, LoginUser } from "../pom/automationexercise/auth";
 import { ContactUs } from "../pom/automationexercise/menu";
 import { Product } from "../pom/automationexercise/product";
 import { CartAndOrder } from "../pom/automationexercise/cart&order";
+import { Order } from "../pom/automationexercise/order";
 
 type TestFixtures = {
   runner: Utils;
@@ -16,6 +17,7 @@ type TestFixtures = {
   contactus: ContactUs;
   product: Product;
   cartAndOrder: CartAndOrder;
+  order: Order;
 };
 
 export const test = base.extend<TestFixtures>({
@@ -48,5 +50,9 @@ export const test = base.extend<TestFixtures>({
   cartAndOrder: async ({ page }, use) => {
     await use(new CartAndOrder(page));
   },
+
+  order: async ({ page }, use) => {
+    await use(new Order(page));
+  }
 
 });
