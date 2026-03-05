@@ -5,6 +5,7 @@ import { CheckBox } from "../pom/checkbox";
 import { RegisterUser, LoginUser } from "../pom/automationexercise/auth";
 import { ContactUs } from "../pom/automationexercise/menu";
 import { Product } from "../pom/automationexercise/product";
+import { CartAndOrder } from "../pom/automationexercise/cart&order";
 
 type TestFixtures = {
   runner: Utils;
@@ -14,6 +15,7 @@ type TestFixtures = {
   login: LoginUser;
   contactus: ContactUs;
   product: Product;
+  cartAndOrder: CartAndOrder;
 };
 
 export const test = base.extend<TestFixtures>({
@@ -42,6 +44,9 @@ export const test = base.extend<TestFixtures>({
   },
   product: async ({ page }, use) => {
     await use(new Product(page));
+  },
+  cartAndOrder: async ({ page }, use) => {
+    await use(new CartAndOrder(page));
   },
 
 });

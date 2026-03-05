@@ -235,64 +235,6 @@ async uploadFile(
   }
 }
 
-async handleAlert(
-  action: 'accept' | 'dismiss' = 'accept',
-  inputText?: string,
-  expectedMessage?: string,
-  timeout: number = 10000,
-  elementName?: string
-): Promise<void> {
-  const name = elementName ?? 'alert';
-
-  try {
-    // ✅ Register listener BEFORE any action
-    const dialogPromise = new Promise<void>((resolve, reject) => {
-      const timer = setTimeout(() => {
-        this.page.removeAllListeners('dialog');
-        reject(new Error(`⏱️ Timed out waiting for ${name} to appear`));
-      }, timeout);
-
-      this.page.on('dialog', async (dialog) => {
-        clearTimeout(timer);
-        try {
-          const actualMessage = dialog.message();
-          const dialogType = dialog.type();
-
-          console.log(`🔔 ${dialogType} detected | message: "${actualMessage}"`);
-
-          if (expectedMessage) {
-            expect(actualMessage).toContain(expectedMessage);
-            console.log(`✅ Message verified: "${actualMessage}"`);
-          }
-
-          if (action === 'accept') {
-            inputText ? await dialog.accept(inputText) : await dialog.accept();
-          } else {
-            await dialog.dismiss();
-          }
-
-          console.log(`✅ ${action === 'accept' ? 'Clicked OK' : 'Clicked Cancel'} on ${dialogType}`);
-          resolve();
-
-        } catch (err) {
-          reject(err);
-        } finally {
-          this.page.removeAllListeners('dialog');
-        }
-      });
-    });
-
-    return dialogPromise; // ✅ Return the promise — caller decides when to trigger
-
-  } catch (error) {
-    this.page.removeAllListeners('dialog');
-    const errorMsg = `❌ Failed to handle ${name} | ${error instanceof Error ? error.message : error}`;
-    console.log(errorMsg);
-    throw new Error(errorMsg);
-  }
-}
-
-
 async isVisible(
   locator: string,
   expectedVisible: boolean = true,
@@ -391,6 +333,74 @@ async scroll(
 
   } catch (error) {
     const errorMsg = `Failed to scroll ${direction} on: ${name}`;
+    console.log(errorMsg);
+    throw new Error(errorMsg);
+  }
+}
+
+
+async mouseHover(
+  locator: string,
+  waitAfterHover?: number,
+  elementName?: string,
+  timeout: number = 5000
+): Promise<void> {
+  const name = elementName ?? 'element';
+
+  try {
+    await this.page.waitForSelector(locator, { state: 'visible', timeout });
+
+    const isVisible = await this.page.isVisible(locator);
+
+    if (!isVisible) {
+      throw new Error(`${name} is not visible, cannot hover`);
+    }
+
+    await this.page.locator(locator).hover();
+    console.log(`✅ Hovered over: ${name}`);
+
+    if (waitAfterHover) {
+      await this.page.waitForTimeout(waitAfterHover);
+      console.log(`⏳ Waited ${waitAfterHover}ms after hover on: ${name}`);
+    }
+
+  } catch (error) {
+    const errorMsg = `❌ Failed to hover over: ${name}`;
+    console.log(errorMsg);
+    throw new Error(errorMsg);
+  }
+}
+
+async multiClick(
+  locator: string,
+  count: number = 3,
+  delayBetweenClicks: number = 300,
+  elementName?: string,
+  timeout: number = 5000
+): Promise<void> {
+  const name = elementName ?? 'element';
+
+  try {
+    await this.page.waitForSelector(locator, { state: 'visible', timeout });
+
+    const isVisible = await this.page.isVisible(locator);
+
+    if (!isVisible) {
+      throw new Error(`${name} is not visible, cannot click`);
+    }
+
+    for (let i = 1; i <= count; i++) {
+      await this.page.locator(locator).click();
+      console.log(`   🖱️ Click ${i} of ${count} on: ${name}`);
+      if (delayBetweenClicks && i < count) {
+        await this.page.waitForTimeout(delayBetweenClicks);
+      }
+    }
+
+    console.log(`✅ Clicked ${count} times on: ${name}`);
+
+  } catch (error) {
+    const errorMsg = `❌ Failed to click ${count} times on: ${name}`;
     console.log(errorMsg);
     throw new Error(errorMsg);
   }
