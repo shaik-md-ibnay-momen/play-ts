@@ -1,3 +1,7 @@
 {
-  "siteUrl": "https://automationexercise.com/"
+  "siteUrl": "https://automationexercise.com/",
+  "searchKeyword": "Winter Top",
+  "searchResultTitle": "SEARCHED PRODUCTS",
+  "subscribeEmail": "test@example.com", 
+    "subscribeSuccessMessage": "You have been successfully subscribed!"
 }

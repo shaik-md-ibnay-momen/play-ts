@@ -327,5 +327,74 @@ async isVisible(
   }
 }
 
+
+async getList(
+  locator: string,
+  childLocator: string,
+  elementName?: string,
+  timeout: number = 5000
+): Promise<string[]> {
+  const name = elementName ?? 'elements';
+
+  try {
+    await this.page.locator(locator).first().waitFor({ state: 'visible', timeout });
+
+    const elements = await this.page.locator(`${locator} ${childLocator}`).all();
+
+    if (elements.length === 0) {
+      console.log(`⚠️ No elements found for: ${name}`);
+      return [];
+    }
+
+    const texts = await Promise.all(elements.map(el => el.innerText()));
+    const trimmed = texts.map(t => t.trim()).filter(t => t.length > 0);
+
+    console.log(`✅ Found ${trimmed.length} ${name}:`);
+    trimmed.forEach((text, i) => console.log(`   📦 Item ${i + 1}: "${text}"`));
+
+    return trimmed;
+
+  } catch (error) {
+    const errorMsg = `❌ Failed to get texts from: ${name}`;
+    console.log(errorMsg);
+    throw new Error(errorMsg);
+  }
+}
+
+async scroll(
+  direction: 'up' | 'down' | 'top' | 'bottom',
+  target?: 'page' | string,
+  amount?: number,
+  elementName?: string
+): Promise<void> {
+  const name = elementName ?? 'page';
+
+  try {
+    if (direction === 'top') {
+      await this.page.evaluate(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      return;
+    }
+
+    if (direction === 'bottom') {
+      await this.page.evaluate(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }));
+      return;
+    }
+
+    if (target && target !== 'page') {
+      await this.page.locator(target).waitFor({ state: 'visible' });
+      await this.page.locator(target).scrollIntoViewIfNeeded();
+      return;
+    }
+    const pixels = amount ?? 500;
+    const scrollAmount = direction === 'down' ? pixels : -pixels;
+    await this.page.evaluate((y) => window.scrollBy({ top: y, behavior: 'smooth' }), scrollAmount);
+
+  } catch (error) {
+    const errorMsg = `Failed to scroll ${direction} on: ${name}`;
+    console.log(errorMsg);
+    throw new Error(errorMsg);
+  }
+}
+
 }
 
