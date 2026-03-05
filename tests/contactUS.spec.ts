@@ -27,8 +27,12 @@ class MenuTests {
         await runner.verifyText(contactus.successMessage, contactUSdata.successMessage, "exact", "Verify success message is displayed");
       });
 
-      
 
+      test("Verify Test Cases Page", async ({ runner, contactus }) => {
+        await runner.clickButton(contactus.testcasesButton);
+        await runner.verifyUrl(contactUSdata.testCasesUrl);
+        await runner.verifyText(contactus.testCasesPageTitle, contactUSdata.testCasesPageTitle, "exact", "Verify Test Cases page title is correct");
+      });
 
 
        });

@@ -6,5 +6,7 @@
   "subjectBox": "Test Subject",
   "messageBox": "This is a test message.",
   "filePath": "C:\\Users\\shaik\\Downloads\\test-file.txt.txt",
-  "successMessage": "Success! Your details have been submitted successfully."
+  "successMessage": "Success! Your details have been submitted successfully.",
+  "testCasesUrl": "https://automationexercise.com/test_cases",
+  "testCasesPageTitle": "TEST CASES"
 }

@@ -11,6 +11,9 @@ export class ContactUs {
     readonly submitButton: string;
     readonly successMessage: string;
 
+    readonly testcasesButton: string;
+    readonly testCasesPageTitle: string;
+
     constructor(page: Page) {
         this.contactUsButton = `a[href="/contact_us"]`;
         this.formTitle = `.contact-form > h2`;
@@ -21,5 +24,8 @@ export class ContactUs {
         this.fileUploadInput = `[name="upload_file"]`;
         this.submitButton = `[data-qa="submit-button"]`;
         this.successMessage = `.status.alert.alert-success`;
+        this.testcasesButton = `a[href="/test_cases"]:first-child`;
+        this.testCasesPageTitle = `.title.text-center > b`;
+
          }
 }

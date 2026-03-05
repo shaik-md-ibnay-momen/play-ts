@@ -4,6 +4,7 @@ import { AjaxForm } from "../pom/ajaxform";
 import { CheckBox } from "../pom/checkbox";
 import { RegisterUser, LoginUser } from "../pom/automationexercise/auth";
 import { ContactUs } from "../pom/automationexercise/menu";
+import { Product } from "../pom/automationexercise/product";
 
 type TestFixtures = {
   runner: Utils;
@@ -12,6 +13,7 @@ type TestFixtures = {
   register: RegisterUser;
   login: LoginUser;
   contactus: ContactUs;
+  product: Product;
 };
 
 export const test = base.extend<TestFixtures>({
@@ -38,6 +40,8 @@ export const test = base.extend<TestFixtures>({
   contactus: async ({ page }, use) => {
     await use(new ContactUs(page));
   },
-
+  product: async ({ page }, use) => {
+    await use(new Product(page));
+  },
 
 });
