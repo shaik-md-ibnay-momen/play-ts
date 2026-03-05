@@ -292,5 +292,40 @@ async handleAlert(
   }
 }
 
+
+async isVisible(
+  locator: string,
+  expectedVisible: boolean = true,
+  timeout: number = 5000,
+  elementName?: string
+): Promise<boolean> {
+  const name = elementName ?? 'element';
+
+  try {
+    await this.page.waitForSelector(locator, {
+      state: expectedVisible ? 'visible' : 'hidden',
+      timeout,
+    });
+
+    const visible = await this.page.isVisible(locator);
+
+    if (expectedVisible && visible) {
+      console.log(`✅ ${name} is visible as expected`);
+    } else if (!expectedVisible && !visible) {
+      console.log(`✅ ${name} is hidden as expected`);
+    } else {
+      throw new Error(`❌ ${name} visibility mismatch | expected: ${expectedVisible} | actual: ${visible}`);
+    }
+
+    return visible;
+
+  } catch (error) {
+    const visible = await this.page.isVisible(locator).catch(() => false);
+    const errorMsg = `❌ Failed visibility check on: ${name} | expected: ${expectedVisible} | actual: ${visible}`;
+    console.log(errorMsg);
+    throw new Error(errorMsg);
+  }
+}
+
 }
 
