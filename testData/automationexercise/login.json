@@ -1,7 +1,7 @@
 {
     "formTitle": "Login to your account",
-    "email": "shk123@gmail.com",
-    "password": "123456789",
+    "email": "shaikh398@example.com",
+    "password": "password123",
     "warningMessage": "Your email or password is incorrect!",
     "wrongEmail": "wrongemail@gmail.com",
     "wrongPassword": "wrongpassword",
