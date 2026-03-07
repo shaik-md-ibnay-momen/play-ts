@@ -52,6 +52,29 @@ class CartAndOrderTests {
 
       });
 
+
+      test("Remove Products From Cart", async ({ runner, cartAndOrder, product }) => {
+        
+        await runner.clickButton(cartAndOrder.productLink);
+        await runner.verifyUrl("/products", "endsWith", 5000, "Verify URL after clicking Products link");
+        await runner.isVisible(product.productList, true);
+        await runner.clickButton(cartAndOrder.anyProduct);
+        const productname = await runner.extractText(product.productDetailName);
+        await runner.typeText(cartAndOrder.quantityInput, "4");
+        await runner.clickButton(cartAndOrder.detailPageAddToCartButton);
+        await runner.clickButton(cartAndOrder.modalViewCartButton);
+        await runner.verifyUrl("/view_cart", "endsWith", 5000, "Verify URL after clicking View Cart button");
+        const cartProductList = await runner.getList(cartAndOrder.cartTableRow, cartAndOrder.cartTableProductName);
+        expect(cartProductList).toContain(productname);
+        const quantity = await runner.extractText(cartAndOrder.cartQuantity);
+        expect(quantity).toBe("4");
+
+        await runner.clickButton(cartAndOrder.removeProductButton);
+        await runner.isVisible(cartAndOrder.emptyCartMessage, true, 5000);
+
+
+      });
+
       
 
 

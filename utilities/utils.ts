@@ -49,11 +49,11 @@ async verifyUrl(
     }
 
     const actual = this.page.url();
-    console.log(`✅ Passed - actual: "${actual}" | expected: "${expected}" | type: ${type}`);
+    console.log(` Passed - actual: "${actual}" | expected: "${expected}" | type: ${type}`);
 
   } catch (error) {
     const actual = this.page.url();
-    const errorMsg = `❌ Failed - actual: "${actual}" | expected: "${expected}" | type: ${type}`;
+    const errorMsg = ` Failed - actual: "${actual}" | expected: "${expected}" | type: ${type}`;
     console.log(errorMsg);
     throw error;
   }
@@ -62,7 +62,7 @@ async verifyUrl(
 async waitFor(ms: number, message?: string): Promise<void> {
   console.log(message ?? `⏳ Waiting for ${ms}ms...`);
   await this.page.waitForTimeout(ms);
-  console.log(`✅ Wait complete: ${ms}ms`);
+  console.log(` Wait complete: ${ms}ms`);
 }
 
 async verifyText(
@@ -93,11 +93,11 @@ async verifyText(
         throw new Error(`Unknown type: "${type}"`);
     }
 
-    console.log(`✅ Passed - actual: "${actual.trim()}" | expected: "${expected}" | type: ${type}`);
+    console.log(` Passed - actual: "${actual.trim()}" | expected: "${expected}" | type: ${type}`);
 
   } catch (error) {
     const actual = await this.page.locator(locator).innerText().catch(() => 'Could not extract text');
-    const errorMsg = `❌ Failed - actual: "${actual.trim()}" | expected: "${expected}" | type: ${type}`;
+    const errorMsg = ` Failed - actual: "${actual.trim()}" | expected: "${expected}" | type: ${type}`;
     console.log(errorMsg);
     throw error;
   }
@@ -112,11 +112,11 @@ async extractText(
     // Wait for element to appear (useful after ajax)
     await this.page.locator(locator).waitFor({ state: 'visible', timeout });
     const text = await this.page.locator(locator).innerText();
-    console.log(`✅ Extracted text: "${text.trim()}"`);
+    console.log(`Extracted text: "${text.trim()}"`);
     return text.trim();
 
   } catch (error) {
-    const errorMsg = `❌ Failed to extract text from element`;
+    const errorMsg = `Failed to extract text from element`;
     console.log(errorMsg);
     throw error;
   }
@@ -157,10 +157,10 @@ async clickButton(locator: string, elementName?: string): Promise<void> {
     }
 
     await this.page.locator(locator).click();
-    console.log(`✅ Clicked on: ${name}`);
+    console.log(` Clicked on: ${name}`);
 
   } catch (error) {
-    const errorMsg = `❌ Failed to click on: ${name}`;
+    const errorMsg = ` Failed to click on: ${name}`;
     console.log(errorMsg);
     throw new Error(errorMsg);
   }
@@ -197,10 +197,10 @@ async selectOption(
         throw new Error(`Unknown selectBy type: "${selectBy}"`);
     }
 
-    console.log(`✅ Selected option "${value}" by ${selectBy} in: ${name}`);
+    console.log(` Selected option "${value}" by ${selectBy} in: ${name}`);
 
   } catch (error) {
-    const errorMsg = `❌ Failed to select option "${value}" in: ${name}`;
+    const errorMsg = ` Failed to select option "${value}" in: ${name}`;
     console.log(errorMsg);
     throw new Error(errorMsg);
   }
@@ -225,11 +225,11 @@ async uploadFile(
     await this.page.locator(locator).setInputFiles(filePath);
 
     const files = Array.isArray(filePath) ? filePath : [filePath];
-    console.log(`✅ Uploaded ${files.length} file(s) to: ${name}`);
+    console.log(` Uploaded ${files.length} file(s) to: ${name}`);
     files.forEach((f, i) => console.log(`   📎 File ${i + 1}: ${f}`));
 
   } catch (error) {
-    const errorMsg = `❌ Failed to upload file(s) to: ${name}`;
+    const errorMsg = ` Failed to upload file(s) to: ${name}`;
     console.log(errorMsg);
     throw new Error(errorMsg);
   }
@@ -252,18 +252,18 @@ async isVisible(
     const visible = await this.page.isVisible(locator);
 
     if (expectedVisible && visible) {
-      console.log(`✅ ${name} is visible as expected`);
+      console.log(` ${name} is visible as expected`);
     } else if (!expectedVisible && !visible) {
-      console.log(`✅ ${name} is hidden as expected`);
+      console.log(` ${name} is hidden as expected`);
     } else {
-      throw new Error(`❌ ${name} visibility mismatch | expected: ${expectedVisible} | actual: ${visible}`);
+      throw new Error(` ${name} visibility mismatch | expected: ${expectedVisible} | actual: ${visible}`);
     }
 
     return visible;
 
   } catch (error) {
     const visible = await this.page.isVisible(locator).catch(() => false);
-    const errorMsg = `❌ Failed visibility check on: ${name} | expected: ${expectedVisible} | actual: ${visible}`;
+    const errorMsg = ` Failed visibility check on: ${name} | expected: ${expectedVisible} | actual: ${visible}`;
     console.log(errorMsg);
     throw new Error(errorMsg);
   }
@@ -284,20 +284,20 @@ async getList(
     const elements = await this.page.locator(`${locator} ${childLocator}`).all();
 
     if (elements.length === 0) {
-      console.log(`⚠️ No elements found for: ${name}`);
+      console.log(`No elements found for: ${name}`);
       return [];
     }
 
     const texts = await Promise.all(elements.map(el => el.innerText()));
     const trimmed = texts.map(t => t.trim()).filter(t => t.length > 0);
 
-    console.log(`✅ Found ${trimmed.length} ${name}:`);
-    trimmed.forEach((text, i) => console.log(`   📦 Item ${i + 1}: "${text}"`));
+    console.log(` Found ${trimmed.length} ${name}:`);
+    trimmed.forEach((text, i) => console.log(` Item ${i + 1}: "${text}"`));
 
     return trimmed;
 
   } catch (error) {
-    const errorMsg = `❌ Failed to get texts from: ${name}`;
+    const errorMsg = ` Failed to get texts from: ${name}`;
     console.log(errorMsg);
     throw new Error(errorMsg);
   }
@@ -357,7 +357,7 @@ async mouseHover(
     }
 
     await this.page.locator(locator).hover();
-    console.log(`✅ Hovered over: ${name}`);
+    console.log(` Hovered over: ${name}`);
 
     if (waitAfterHover) {
       await this.page.waitForTimeout(waitAfterHover);
@@ -365,7 +365,7 @@ async mouseHover(
     }
 
   } catch (error) {
-    const errorMsg = `❌ Failed to hover over: ${name}`;
+    const errorMsg = `Failed to hover over: ${name}`;
     console.log(errorMsg);
     throw new Error(errorMsg);
   }
@@ -400,7 +400,7 @@ async multiClick(
     console.log(`✅ Clicked ${count} times on: ${name}`);
 
   } catch (error) {
-    const errorMsg = `❌ Failed to click ${count} times on: ${name}`;
+    const errorMsg = `Failed to click ${count} times on: ${name}`;
     console.log(errorMsg);
     throw new Error(errorMsg);
   }

@@ -22,6 +22,9 @@ export class CartAndOrder {
 
     readonly cartQuantity: string;
 
+    readonly removeProductButton: string;
+    readonly emptyCartMessage: string;
+
 
     constructor(page: Page) {
 
@@ -41,6 +44,8 @@ export class CartAndOrder {
         this.quantityInput = "#quantity";
         this.detailPageAddToCartButton = ".btn.btn-default.cart";
         this.cartQuantity = "tbody > tr > .cart_quantity > button";
+        this.removeProductButton = ".cart_quantity_delete";
+        this.emptyCartMessage = "#empty_cart";
 
          }
 }
