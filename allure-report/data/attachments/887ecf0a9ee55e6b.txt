@@ -1,0 +1,9 @@
+Navigated to: https://automationexercise.com/
+ Clicked on:  Signup / Login
+Verify text [exact]: "Login to your account"
+ Passed - actual: "Login to your account" | expected: "Login to your account" | type: exact
+Typed "shaikh398@example.com" into input
+Typed "password123" into input
+ Clicked on: Login Btn
+Verify logged in username is correct
+ Passed - actual: "Logged in as Shaik" | expected: "Logged in as " | type: contains

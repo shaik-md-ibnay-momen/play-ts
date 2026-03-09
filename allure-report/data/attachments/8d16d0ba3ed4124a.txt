@@ -1,0 +1,12 @@
+Navigated to: https://automationexercise.com/
+ Clicked on: element
+Verify URL after clicking Products link
+ Passed - actual: "https://automationexercise.com/products" | expected: "/products" | type: endsWith
+ element is visible as expected
+Typed "Winter Top" into input
+ Clicked on: element
+Verify text [exact]: "SEARCHED PRODUCTS"
+ Passed - actual: "SEARCHED PRODUCTS" | expected: "SEARCHED PRODUCTS" | type: exact
+ Found 1 elements:
+ Item 1: "Winter Top"
+Search Result Titles: [ 'Winter Top' ]

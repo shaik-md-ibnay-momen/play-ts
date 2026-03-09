@@ -1,0 +1,9 @@
+Navigated to: https://automationexercise.com/
+ Clicked on:  Signup / Login
+Verify text [exact]: "Login to your account"
+ Passed - actual: "Login to your account" | expected: "Login to your account" | type: exact
+Typed "wrongemail@gmail.com" into input
+Typed "wrongpassword" into input
+ Clicked on: Login Btn
+Verify warning message is correct
+ Passed - actual: "Your email or password is incorrect!" | expected: "Your email or password is incorrect!" | type: exact

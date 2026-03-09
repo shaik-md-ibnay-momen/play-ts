@@ -1,0 +1,20 @@
+Navigated to: https://automationexercise.com/
+ Clicked on: element
+Verify URL after clicking Products link
+ Passed - actual: "https://automationexercise.com/products" | expected: "/products" | type: endsWith
+ Hovered over: element
+Extracted text: "Blue Top"
+ Clicked on: element
+ Clicked on: element
+ Clicked on: element
+Verify URL after clicking Cart button
+ Passed - actual: "https://automationexercise.com/view_cart" | expected: "/view_cart" | type: endsWith
+ Clicked on: element
+ Clicked on: element
+ Clicked on:  Signup / Login
+Verify form title is correct
+ Passed - actual: "New User Signup!" | expected: "New User Signup!" | type: exact
+Typed "Shaik" into input
+Typed "shaikh307@example.com" into input
+ Clicked on: Signup Btn
+ Failed - actual: "Could not extract text" | expected: "ENTER ACCOUNT INFORMATION" | type: exact

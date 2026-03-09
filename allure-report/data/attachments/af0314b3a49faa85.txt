@@ -1,0 +1,35 @@
+Navigated to: https://automationexercise.com/
+ Clicked on:  Signup / Login
+Verify form title is correct
+ Passed - actual: "New User Signup!" | expected: "New User Signup!" | type: exact
+Typed "Shaik" into input
+Typed "shaikh307@example.com" into input
+ Clicked on: Signup Btn
+Verify form title is correct
+ Passed - actual: "ENTER ACCOUNT INFORMATION" | expected: "ENTER ACCOUNT INFORMATION" | type: exact
+ Clicked on: element
+Typed "password123" into input
+ Selected option "10" by label in: dropdown
+ Selected option "May" by label in: dropdown
+ Selected option "1990" by label in: dropdown
+ Clicked on: element
+ Clicked on: element
+Typed "Shaik" into input
+Typed "Shaik" into input
+Typed "Example Inc." into input
+Typed "123 Main St" into input
+Typed "Apt 4B" into input
+ Selected option "United States" by label in: dropdown
+Typed "California" into input
+Typed "Los Angeles" into input
+Typed "90001" into input
+Typed "1234567890" into input
+ Clicked on: Create Account Btn
+Verify account created title is correct
+ Passed - actual: "ACCOUNT CREATED!" | expected: "ACCOUNT CREATED!" | type: exact
+ Clicked on: Continue Btn
+Verify logged in username is correct
+ Passed - actual: "Logged in as Shaik" | expected: "Logged in as Shaik" | type: exact
+ Clicked on: Delete Account Btn
+Verify account deleted title is correct
+ Passed - actual: "ACCOUNT DELETED!" | expected: "ACCOUNT DELETED!" | type: exact

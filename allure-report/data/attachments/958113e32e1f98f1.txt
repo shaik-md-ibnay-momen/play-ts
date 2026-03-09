@@ -1,0 +1,17 @@
+Navigated to: https://automationexercise.com/
+ Clicked on: element
+Verify URL after clicking Products link
+ Passed - actual: "https://automationexercise.com/products" | expected: "/products" | type: endsWith
+ element is visible as expected
+ Clicked on: element
+Extracted text: "Stylish Dress"
+Typed "4" into input
+ Clicked on: element
+ Clicked on: element
+Verify URL after clicking View Cart button
+ Passed - actual: "https://automationexercise.com/view_cart" | expected: "/view_cart" | type: endsWith
+ Found 1 elements:
+ Item 1: "Stylish Dress"
+Extracted text: "4"
+ Clicked on: element
+ element is visible as expected

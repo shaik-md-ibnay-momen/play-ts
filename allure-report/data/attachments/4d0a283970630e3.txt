@@ -1,0 +1,11 @@
+Navigated to: https://automationexercise.com/
+ Clicked on: element
+Verify URL after clicking Cart button
+ Passed - actual: "https://automationexercise.com/view_cart" | expected: "/view_cart" | type: endsWith
+Verify text [exact]: "SUBSCRIPTION"
+ Passed - actual: "SUBSCRIPTION" | expected: "SUBSCRIPTION" | type: exact
+Typed "test@example.com" into input
+ Clicked on: element
+ element is visible as expected
+Verify text [exact]: "You have been successfully subscribed!"
+ Passed - actual: "You have been successfully subscribed!" | expected: "You have been successfully subscribed!" | type: exact

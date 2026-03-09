@@ -11,7 +11,7 @@ class OrderAndAuthTests {
 
     test.describe("Order and Authentication Section Testing", () => {
         let productName: string;
-      test.beforeEach(async ({ runner , cartAndOrder, product}) => {
+      test.beforeEach(async ({ runner}) => {
         await runner.navigateTo(cartAndOrderData.siteUrl);
       });
 

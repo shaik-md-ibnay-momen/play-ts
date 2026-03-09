@@ -1,0 +1,17 @@
+Navigated to: https://automationexercise.com/
+ Clicked on: element
+Verify URL after clicking Products link
+ Passed - actual: "https://automationexercise.com/products" | expected: "/products" | type: endsWith
+ element is visible as expected
+ Clicked on: element
+ element is visible as expected
+Verify text [startsWith]: "Rs."
+ Passed - actual: "Rs. 500" | expected: "Rs." | type: startsWith
+Verify text [startsWith]: "Category"
+ Passed - actual: "Category: Women > Tops" | expected: "Category" | type: startsWith
+Verify text [startsWith]: "Availability"
+ Passed - actual: "Availability: In Stock" | expected: "Availability" | type: startsWith
+Verify text [startsWith]: "Condition"
+ Passed - actual: "Condition: New" | expected: "Condition" | type: startsWith
+Verify text [startsWith]: "Brand"
+ Passed - actual: "Brand: Polo" | expected: "Brand" | type: startsWith

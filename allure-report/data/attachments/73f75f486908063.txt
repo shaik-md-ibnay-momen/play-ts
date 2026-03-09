@@ -1,0 +1,6 @@
+Navigated to: https://automationexercise.com/
+ Clicked on: element
+Verify URL [exact]: "https://automationexercise.com/test_cases"
+ Passed - actual: "https://automationexercise.com/test_cases" | expected: "https://automationexercise.com/test_cases" | type: exact
+Verify Test Cases page title is correct
+ Passed - actual: "TEST CASES" | expected: "TEST CASES" | type: exact

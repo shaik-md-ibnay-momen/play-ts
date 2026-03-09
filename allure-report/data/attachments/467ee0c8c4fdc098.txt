@@ -1,0 +1,8 @@
+Navigated to: https://www.testmuai.com/selenium-playground/ajax-form-submit-demo/
+Typed "Shaik" into input
+Typed "Hello" into input
+ Clicked on: Submit Btn
+ Waiting for 5000ms...
+ Wait complete: 5000ms
+Extracted text: ""
+Extracted success message: ""

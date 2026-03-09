@@ -60,7 +60,7 @@ async verifyUrl(
 }
 
 async waitFor(ms: number, message?: string): Promise<void> {
-  console.log(message ?? `⏳ Waiting for ${ms}ms...`);
+  console.log(message ?? ` Waiting for ${ms}ms...`);
   await this.page.waitForTimeout(ms);
   console.log(` Wait complete: ${ms}ms`);
 }
@@ -105,11 +105,10 @@ async verifyText(
 
 async extractText(
   locator: string,
-  waitForAjax: boolean = false,
   timeout: number = 5000
 ): Promise<string> {
   try {
-    // Wait for element to appear (useful after ajax)
+    
     await this.page.locator(locator).waitFor({ state: 'visible', timeout });
     const text = await this.page.locator(locator).innerText();
     console.log(`Extracted text: "${text.trim()}"`);
@@ -361,7 +360,7 @@ async mouseHover(
 
     if (waitAfterHover) {
       await this.page.waitForTimeout(waitAfterHover);
-      console.log(`⏳ Waited ${waitAfterHover}ms after hover on: ${name}`);
+      console.log(` Waited ${waitAfterHover}ms after hover on: ${name}`);
     }
 
   } catch (error) {
@@ -391,13 +390,13 @@ async multiClick(
 
     for (let i = 1; i <= count; i++) {
       await this.page.locator(locator).click();
-      console.log(`   🖱️ Click ${i} of ${count} on: ${name}`);
+      console.log(`   Click ${i} of ${count} on: ${name}`);
       if (delayBetweenClicks && i < count) {
         await this.page.waitForTimeout(delayBetweenClicks);
       }
     }
 
-    console.log(`✅ Clicked ${count} times on: ${name}`);
+    console.log(` Clicked ${count} times on: ${name}`);
 
   } catch (error) {
     const errorMsg = `Failed to click ${count} times on: ${name}`;
@@ -405,6 +404,6 @@ async multiClick(
     throw new Error(errorMsg);
   }
 }
-
+ 
 }
 

@@ -1,0 +1,10 @@
+Navigated to: https://automationexercise.com/
+ Clicked on: Contact Us Btn
+Verify form title is correct
+ Passed - actual: "GET IN TOUCH" | expected: "GET IN TOUCH" | type: exact
+Typed "Test User" into input
+Typed "testuser@example.com" into input
+Typed "Test Subject" into input
+Typed "This is a test message." into input
+ Uploaded 1 file(s) to: file input
+   📎 File 1: C:\Users\shaik\Downloads\test-file.txt.txt

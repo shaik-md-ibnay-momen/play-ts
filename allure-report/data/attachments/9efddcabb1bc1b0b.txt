@@ -1,0 +1,19 @@
+Navigated to: https://automationexercise.com/
+ Clicked on: element
+Verify URL after clicking Products link
+ Passed - actual: "https://automationexercise.com/products" | expected: "/products" | type: endsWith
+ Hovered over: element
+ Clicked on: element
+ Clicked on: element
+Extracted text: "Blue Top"
+Extracted text: "Men Tshirt"
+ Hovered over: element
+ Clicked on: element
+ Clicked on: element
+Verify URL after clicking View Cart button
+ Passed - actual: "https://automationexercise.com/view_cart" | expected: "/view_cart" | type: endsWith
+ Found 2 elements:
+ Item 1: "Blue Top"
+ Item 2: "Men Tshirt"
+[ 'Blue Top', 'Men Tshirt' ]
+[ 'Blue Top', 'Men Tshirt' ]

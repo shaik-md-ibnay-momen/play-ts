@@ -1,0 +1,72 @@
+Navigated to: https://automationexercise.com/
+ Clicked on:  Signup / Login
+Verify text [exact]: "Login to your account"
+ Passed - actual: "Login to your account" | expected: "Login to your account" | type: exact
+Typed "shaikh398@example.com" into input
+Typed "password123" into input
+ Clicked on: Login Btn
+Verify logged in username is correct
+ Passed - actual: "Logged in as Shaik" | expected: "Logged in as " | type: contains
+ Clicked on: element
+Verify URL after clicking Products link
+ Passed - actual: "https://automationexercise.com/products" | expected: "/products" | type: endsWith
+ Hovered over: element
+Extracted text: "Blue Top"
+ Clicked on: element
+ Clicked on: element
+ Clicked on: element
+Verify URL after clicking Cart button
+ Passed - actual: "https://automationexercise.com/view_cart" | expected: "/view_cart" | type: endsWith
+ Clicked on: element
+ Found 8 elements:
+ Item 1: "Your delivery address"
+ Item 2: "Mr. Shaik Shaik"
+ Item 3: "Example Inc."
+ Item 4: "123 Main St"
+ Item 5: "Apt 4B"
+ Item 6: "Los Angeles California 90001"
+ Item 7: "United States"
+ Item 8: "1234567890"
+ Found 8 elements:
+ Item 1: "Your billing address"
+ Item 2: "Mr. Shaik Shaik"
+ Item 3: "Example Inc."
+ Item 4: "123 Main St"
+ Item 5: "Apt 4B"
+ Item 6: "Los Angeles California 90001"
+ Item 7: "United States"
+ Item 8: "1234567890"
+[
+  'Your delivery address',
+  'Mr. Shaik Shaik',
+  'Example Inc.',
+  '123 Main St',
+  'Apt 4B',
+  'Los Angeles California 90001',
+  'United States',
+  '1234567890'
+]
+[
+  'Your billing address',
+  'Mr. Shaik Shaik',
+  'Example Inc.',
+  '123 Main St',
+  'Apt 4B',
+  'Los Angeles California 90001',
+  'United States',
+  '1234567890'
+]
+ Found 1 elements:
+ Item 1: "Blue Top"
+Blue Top
+Extracted text: "1"
+Typed "Please deliver between 9 AM to 5 PM." into input
+ Clicked on: element
+Typed "John Doe" into input
+Typed "4111111111111111" into input
+Typed "123" into input
+Typed "12" into input
+Typed "2025" into input
+Verify order success message is displayed
+ Passed - actual: "Your order has been placed successfully!" | expected: "Your order has been placed successfully!" | type: contains
+ Clicked on: element

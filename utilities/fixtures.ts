@@ -1,4 +1,4 @@
-import { test as base, Page } from "@playwright/test";
+import { test as base } from "@playwright/test";
 import { Utils } from "./utils";
 import { AjaxForm } from "../pom/ajaxform";
 import { CheckBox } from "../pom/checkbox";
